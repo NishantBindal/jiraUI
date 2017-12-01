@@ -1,0 +1,8 @@
+/* You can add global styles to this file, and also import other style files */
+@media (min-width: 1200px){
+  
+  .mycontainer{
+    max-width: 30%;
+    overflow: hidden;
+  }
+}
