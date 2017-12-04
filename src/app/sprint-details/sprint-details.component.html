@@ -1,0 +1,20 @@
+<table class="table">
+  <thead>
+      <tr>
+          <th>id</th>
+          <th>Sprint Name</th>
+          <th>Start Date</th>          
+          <th>Total Story Points</th>
+          <th>State</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr *ngIf='sprintDetails'>
+        <td>{{sprintDetails.id}}</td>
+        <td>{{sprintDetails.name}}</td>
+        <td>{{sprintDetails.startDate}}</td>
+        <td>{{sprintDetails.totalStoryPoints}}</td>
+        <td>{{sprintDetails.state}}</td>
+      </tr>
+  </tbody>
+</table>

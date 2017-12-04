@@ -8,6 +8,9 @@ import { RouterModule } from '@angular/router';
 import { ContactComponent } from './shared/contact.component'
 import { HomeComponent } from './shared/home.component';
 import { UserFormComponent } from './form-data/user-form.component';
+import { HttpClientModule } from '@angular/common/http';
+import { SprintDetailsComponent } from './sprint-details/sprint-details.component';
+import { BoardsService } from './boards/boards.service';
 
 
 @NgModule({
@@ -16,10 +19,12 @@ import { UserFormComponent } from './form-data/user-form.component';
     AboutComponent,
     ContactComponent,
     HomeComponent,
-    UserFormComponent
+    UserFormComponent,
+    SprintDetailsComponent
   ],
   imports: [
     BrowserModule,
+    HttpClientModule,
     FormsModule,
     RouterModule.forRoot(
       [
@@ -31,7 +36,7 @@ import { UserFormComponent } from './form-data/user-form.component';
         { path: '**', redirectTo: 'home', pathMatch: 'full' }
       ])
   ],
-  providers: [],
+  providers: [ BoardsService ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

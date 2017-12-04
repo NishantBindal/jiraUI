@@ -4,6 +4,9 @@
     <span class="caret"></span>
   </button>
   <ul class="dropdown-menu" aria-labelledby="dropdownMenu1">
-    <li *ngFor="let project of projects" (click)="open(project)"><a>{{project}}</a></li>
+    <li *ngFor="let project of projects" (click)="open(project.name,project)"><a>{{project.name}}</a></li>
   </ul>
 </div>
+<app-sprint-details [boardId]='currentBoardId'>
+  
+</app-sprint-details>
