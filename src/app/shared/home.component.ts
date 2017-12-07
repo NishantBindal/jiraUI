@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
-import { BoardsService } from '../boards/boards.service';
+import { JiraApiService } from '../boards/boards.service';
+import { IBoard } from '../boards/board';
 
 @Component({
   selector: 'app-home',
@@ -9,46 +9,29 @@ import { BoardsService } from '../boards/boards.service';
 })
 export class HomeComponent implements OnInit {
   
-  projects = [];
-  projectFromService = [];
+  projects :IBoard[];
   currentProject = '';
-  currentBoardId = -1;
+  currentBoardId = -2;
   isSelected = false;
   errorMessage: string;
  // Inject HttpClient into your component or service.
- constructor(private http: HttpClient, private _boardsService: BoardsService) {}
+ constructor( private _boardsService: JiraApiService) {}
  
- open(itemName, item) {
+ open(item) :void
+ {
       console.log(item);
       this.currentBoardId = item.id;
-      this.currentProject = itemName;
+      this.currentProject = item.name;
       this.isSelected = true;
   }
 
 
   ngOnInit(): void {
-    /*
+ 
     this._boardsService.getBoards()
-    .subscribe(
-      boards => {
-        this.projectFromService = boards;
-      },
-      error => this.errorMessage = <any>error
-
-      
-    );
-    */
-
-    //This can be done in a service
-    // Make the HTTP request:
-    this.http.get('http://localhost:55681/api/jira/getboard').subscribe(data => {
-    this.projects = data[0]['values'];
-    
-    console.log(this.projects);
+    .subscribe(board=>{this.currentBoardId=-1;this.projects=board[0].values;},error => {
+      this.errorMessage="Please try again or refresh the page";
     });
-    
-
-
-      
-  }
+  } 
 }
+

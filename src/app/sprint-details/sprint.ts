@@ -13,10 +13,21 @@ export interface SprintDetail {
     self:             string;   
     startDate:        string;   
     state:            string;   
-    timeChart:        Array<Object>;
+    timeChart:        Array<ResourseTimeChart>;
     totalStoryPoints: number;   
 }
-
+export interface ResourseTimeChart
+{
+    resourseName :string
+     timeChart :TimeChart
+    totalSpent:Number
+}
+export interface TimeChart
+{
+    remaining :Number
+    originalEstimated :Number
+    totalSpent:Number
+}
 // export interface myType {
 //     name : myType2;
 // }
